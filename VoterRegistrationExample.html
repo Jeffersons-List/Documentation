@@ -1,0 +1,44 @@
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+
+<body>
+	<input id="email" placeholder="email">
+	<br>
+	<input id="address" placeholder="address">
+	<br>
+	<input id="city" placeholder="city">
+	<br>
+	<select id="state">
+	  <option value="AL">AL</option>
+	  <option value="NY">NY</option>
+	  <option value="va">VA</option>
+	</select>
+	<br>
+	<input id="zip" placeholder="zip">
+	<br>
+	<button onclick="submitInfo()">Submit</button>
+</body>
+
+<script>
+function submitInfo(){
+	$.ajax({
+        type: "POST",
+        url: "http://localhost:5000/api/VoterRegistration/SubmitVoterInfo",
+        contentType: "application/json",
+        dataType: "json",
+        data: JSON.stringify({
+          Email : document.getElementById('email').value,
+          Address : document.getElementById('address').value,
+          City : document.getElementById('city').value,
+          StateAbrev : document.getElementById('state').value,
+          Zip : document.getElementById('zip').value,
+          IsCitizen:true
+        }),
+        success: function( result ) {
+            //Display the result data as needed 
+        }
+	});
+}
+</script>
