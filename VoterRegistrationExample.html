@@ -25,9 +25,12 @@
 function submitInfo(){
 	$.ajax({
         type: "POST",
-        url: "http://localhost:5000/api/VoterRegistration/SubmitVoterInfo",
+        url: "https://jeffersonslist.com/api/VoterRegistration/SubmitVoterInfo",
         contentType: "application/json",
         dataType: "json",
+        headers: {
+        	"JLAuthToken":"XXXXXXX-TOKEN-XXXXXXXXX"
+        },
         data: JSON.stringify({
           Email : document.getElementById('email').value,
           Address : document.getElementById('address').value,
